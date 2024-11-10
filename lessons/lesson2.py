@@ -1,65 +1,39 @@
-# import lesson1
-# from lesson1 import Person
-#
-# person_test = Person("Arzybek", "25", "Bishkek")
-#
-# person_test.introduce()
+from main import Hero
 
 
-# Принципы ООП
+class Warrior(Hero):
 
-# Наследование: позволяет одному классу (производному) унаследовать свойства и методы другого класса (базового),
-#    расширяя или изменяя их. Наследование способствует повторному использованию кода и созданию иерархии классов.
-
-# Полиморфизм: предоставляет возможность объектам разных классов обрабатывать одно и то же сообщение по-разному.
-#   С помощью полиморфизма можно создавать гибкие интерфейсы, работающие с разными типами объектов,
-#    что повышает гибкость и масштабируемость кода.
-
-# Инкапсуляция: предполагает объединение данных и методов, работающих с этими данными, в единое целое — объект.
-#   Это позволяет скрыть внутреннее устройство объекта и защитить данные от прямого доступа и изменений извне.
-
-
-# Абстракция: этот принцип позволяет выделить ключевые характеристики объектов, скрывая детали их реализации.
-#    Благодаря абстракции, можно сосредоточиться на общих свойствах и поведении объектов, игнорируя излишние детали.
-
-# Базовый\Супер\Родительский\
-class Hero:
-
-    def __init__(self, name, health=100):
-        self.name = name
-        self.health = health
-
-
-    def introduce(self):
-        return f"Я {self.name}, мое здоровье : {self.health} "
-
-    def rest(self):
-        self.health += 10
-        return f"{self.name} отдыхает и восстанавливает здоровье. Новое здоровье: {self.health}"
-
-    def action(self):
-        return f"{self.name} выполняет базовое действие: делает ход\n"
-
-
-
-class Mage(Hero):
-
-    def __init__(self, name, health=100, mana=100):
+    def __init__(self, name, health, shield = 50, sword = 30):
         super().__init__(name, health)
-        self.mana = mana
+        self.shield = shield
+        self.sword = sword
 
-    def cast_spell(self):
-        if self.mana >= 10:
-            self.mana -= 10
-            return f"{self.name} использует заклинание! \n Огненый шар {self.mana}"
+    def defence(self):
+        if self.shield >= 2:
+            self.shield -= 1
+            return f"{self.name} you succesfully defenced \n you have {self.shield} endurance left "
+        elif self.shield == 1:
+            self.shield -= 1
+            return f"{self.name} you succesfully defenced \n however you broke your shield "
         else:
-            return f"{self.name} недостаточно маны для заклинания!"
+            return f"you broke your shield"
+
+    def atack(self):
+        if self.shield >= 1 and self.health >= 100:
+            new_damage = self.sword * 0.7
+            return f"{self.name} you atacked \n you damaged for {new_damage} points"
+        elif self.shield >= 1 and self.health <= 100:
+            new_damage = self.sword * 1.3
+            return f"{self.name} you atacked , you are getting angry \n you damaged for {new_damage} points"
+        else:
+            new_damage = self.sword * 2
+            return f"{self.name} you are in BERSERK MODE \n you damaged for {new_damage} points"
 
     def action(self):
         base_action = super().action()
-        spell_result = self.cast_spell()
-
-        return f"{base_action}, {spell_result}"
+        special_result = self.defence()
+        special_result2 = self.atack()
+        return f"{base_action}, {special_result} and {special_result2}"
 
 
 def hero_action(hero):
@@ -67,7 +41,8 @@ def hero_action(hero):
     print(hero.rest())
     print(hero.action())
 
-mage = Mage("Гендальф")
 
-hero_action(mage)
+Guts = Warrior("Adil", 99, 1 , 30)
 
+hero_action(Guts)
+Guts.action()
