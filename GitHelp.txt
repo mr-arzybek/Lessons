@@ -63,3 +63,14 @@ git clone link
 15) Это для отвязки проекта от ссылки
 git remote remove origin
 
+
+
+создание venv
+python -m venv venv
+py -m venv venv
+python3 -m venv venv
+python2 -m venv venv
+
+активация venv
+source venv/bin/activate  --- Linux
+venv\Scripts\activate  --- Windows

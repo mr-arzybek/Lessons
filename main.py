@@ -1,3 +1,6 @@
+from lessons import lesson1
+
+
 class Hero:
     def __init__(self, name, health):
         self.name = name
