@@ -74,3 +74,21 @@ python2 -m venv venv
 активация venv
 source venv/bin/activate  --- Linux
 venv\Scripts\activate  --- Windows
+
+
+git merge name-branch для слияния веток
+git checkout -b name-branch для создания ветки и перехода в нее
+
+git pull origin name-branch для стягивания из ветки актуальных изменений
+
+cd ../ для перехода в папку выше
+cd name_dir для перехода в папку name_dir
+
+mkdir name_dir для создания папки name_dir
+touch name_file.py для создания файла name_file.py
+
+ls  для просмотра содержимого папки
+ls -a для просмотра содержимого папки с показом скрытых файлов
+vim name_file.py для редактирования файла
+nano name_file.py для редактирования файла
+
